@@ -42,7 +42,31 @@ describe("Feature Test:", function() {
     });
 
     it("can turn power-saving mode off", function() {
-        thermostat.powerSavingOff();
+        thermostat.togglePS();
         expect(thermostat.powerSaving).toEqual(false);
+    });
+
+    it("has max temp of 32 with power-saving off", function() {
+        thermostat.togglePS()
+        for(let i = 1; i <=13; i ++) {
+            thermostat.up();
+        }
+        expect(thermostat.getTemperature()).toEqual(32);
+    });
+
+    it("toggles power-saving mode", function() {
+        thermostat.togglePS();
+        expect(thermostat.powerSaving).toEqual(false)
+    });
+
+    it("toggles power-saving mode", function() {
+        thermostat.togglePS();
+        thermostat.togglePS();
+        expect(thermostat.powerSaving).toEqual(true)
+    });
+
+    it("resets the temperature to the default of 20", function() {
+        thermostat.reset();
+        expect(thermostat.getTemperature()).toEqual(20)
     });
 });

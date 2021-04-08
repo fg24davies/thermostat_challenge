@@ -14,7 +14,7 @@ class Thermostat {
     up() {
         if (this.temperature < this.maxTemperature) {
             this.temperature ++;
-        }
+        }  
     }
 
     down() {
@@ -25,7 +25,17 @@ class Thermostat {
         }
     }
 
-    powerSavingOff() {
-        this.powerSaving = false;
+    togglePS() {
+        if (this.powerSaving) {
+            this.powerSaving = false;
+            this.maxTemperature = 32
+        } else {
+            this.powerSaving = true
+            this.maxTemperature = 25
+        }
     }
-}
+
+    reset() {
+        this.temperature = 20;
+    }
+ }
