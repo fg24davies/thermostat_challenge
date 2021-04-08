@@ -8,6 +8,11 @@ describe("Feature Test:", function() {
 
     it("starts the temperature at 20 degrees", function(){
 
-        expect(thermostat.temperature()).toEqual(20)
+        expect(thermostat.getTemperature()).toEqual(20)
+    });
+
+    it("can increase the temperature by 1-degree increments", function() {
+        thermostat.up();
+        expect(thermostat.getTemperature()).toEqual(21);
     });
 });

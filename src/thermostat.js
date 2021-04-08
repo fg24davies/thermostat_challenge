@@ -1,7 +1,14 @@
 
 class Thermostat {
-    temperature(){
-        return 20
-    };
-}
+    constructor() {
+        this.temperature = 20;
+    }
 
+    getTemperature() {
+        return this.temperature;
+    }
+
+    up() {
+        this.temperature ++;
+    }
+}
