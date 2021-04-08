@@ -15,4 +15,18 @@ describe("Feature Test:", function() {
         thermostat.up();
         expect(thermostat.getTemperature()).toEqual(21);
     });
+
+    it("can decrease the temperature by 1-degree increments", function() {
+        thermostat.down();
+        expect(thermostat.getTemperature()).toEqual(19);
+    });
+
+    it("prevents temperature from dropping below 10 degrees", function(){
+        let counter = 1;
+        while (counter <= 11) {
+            thermostat.down();
+            counter ++
+        }
+        expect(thermostat.getTemperature()).toEqual(10);
+    });
 });
