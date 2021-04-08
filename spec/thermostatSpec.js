@@ -29,4 +29,20 @@ describe("Feature Test:", function() {
         }
         expect(thermostat.getTemperature()).toEqual(10);
     });
+
+    it("starts with power-saving mode on", function() {
+        expect(thermostat.powerSaving).toEqual(true);
+    });
+
+    it("has max temp of 25 with power-saving on", function() {
+        for(let i = 1; i <=6; i ++) {
+            thermostat.up();
+        }
+        expect(thermostat.getTemperature()).toEqual(25);
+    });
+
+    it("can turn power-saving mode off", function() {
+        thermostat.powerSavingOff();
+        expect(thermostat.powerSaving).toEqual(false);
+    });
 });

@@ -2,7 +2,9 @@
 class Thermostat {
     constructor() {
         this.temperature = 20;
-        this.minTemperature = 10
+        this.minTemperature = 10;
+        this.maxTemperature = 25;
+        this.powerSaving = true;
     }
 
     getTemperature() {
@@ -10,7 +12,9 @@ class Thermostat {
     }
 
     up() {
-        this.temperature ++;
+        if (this.temperature < this.maxTemperature) {
+            this.temperature ++;
+        }
     }
 
     down() {
@@ -19,5 +23,9 @@ class Thermostat {
         } else {
             this.temperature --;
         }
+    }
+
+    powerSavingOff() {
+        this.powerSaving = false;
     }
 }
