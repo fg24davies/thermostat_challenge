@@ -69,4 +69,23 @@ describe("Feature Test:", function() {
         thermostat.reset();
         expect(thermostat.getTemperature()).toEqual(20)
     });
+
+    it("can recognise medium energy usage", function() {
+        expect(thermostat.currentUsage()).toEqual('medium')
+    });
+
+    it("can recognise low energy usage", function() {
+        for(let i = 1; i <=3; i ++) {
+            thermostat.down();
+        }
+        expect(thermostat.currentUsage()).toEqual('low')
+    });
+
+    it("can recognise high energy usage", function() {
+        thermostat.togglePS();
+        for(let i = 1; i <=6; i ++) {
+            thermostat.up();
+        }
+        expect(thermostat.currentUsage()).toEqual('high')
+    });
 });
