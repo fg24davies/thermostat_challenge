@@ -2,6 +2,10 @@ const thermostat = new Thermostat();
 
 $( document ).ready(function() {
 
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=16f05f6a3f739dc78054d520cabab8a0', function(data){
+    console.log(data);
+  })
+
   // Two lines to make sure initial values are displayed even if code changes default settings from ones in the initial HTML:
   $('#temperature').text(thermostat.getTemperature());
   $('#usage').text(thermostat.currentUsage());
@@ -22,18 +26,18 @@ $( document ).ready(function() {
     thermostat.togglePS();
     if (thermostat.powerSaving) {
       $('#on-off').text("Off");
-      $('#power-saving').addClass("off");
-      $('#power-saving').removeClass("on");
+      $('#power-saving').attr('class', 'off');
+    
     } else {
       $('#on-off').text("On");
-      $('#power-saving').addClass("on");
-      $('#power-saving').removeClass("off");
+      $('#power-saving').attr('class', 'on');
     }
   });
  
   $('button').click(function() {
     $('#temperature').text(thermostat.getTemperature());
     $('#usage').text(thermostat.currentUsage());
+    $('#usage').attr('class', thermostat.currentUsage());
   });
 
 });
