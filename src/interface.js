@@ -1,15 +1,25 @@
 const thermostat = new Thermostat();
 
 $( document ).ready(function() {
-  let city;
+  
   let outsideTemp;
+  let city;
 
-  $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=16f05f6a3f739dc78054d520cabab8a0', function(data){
-    city = data.name;
-    $('#city').text(city);
+  function displayTemp() {
+    city =  $('#city').val();
+    $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + ',uk&APPID=16f05f6a3f739dc78054d520cabab8a0', function(data) {
     outsideTemp = Math.round((data.main.temp) - 273.15);
     $('#outside-temp').text(outsideTemp);
-  })
+    })
+  }
+
+  displayTemp();
+
+  $('#city').change(function() {
+    displayTemp();
+  });
+
+  
 
 
   // Two lines to make sure initial values are displayed even if code changes default settings from ones in the initial HTML:
