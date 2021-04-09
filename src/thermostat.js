@@ -32,6 +32,9 @@ class Thermostat {
         } else {
             this.powerSaving = true
             this.maxTemperature = 25
+            if (this.temperature > 25) {
+                this.temperature = 25;
+            }
         }
     }
 
@@ -41,11 +44,11 @@ class Thermostat {
 
     currentUsage() {
         if(this.temperature < 18) {
-            return 'low';
+            return 'Low';
         } else if(this.temperature > 25) {
-            return 'high';
+            return 'High';
         } else {
-            return 'medium';
+            return 'Medium';
         }
     }
  }
